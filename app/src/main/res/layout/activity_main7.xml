@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.qin.databinding.bean.Person" />
+        <import type="android.view.View" />
+        <import type="com.qin.databinding.Main7Activity.Presenter" />
+
+        <variable
+            name="person"
+            type="Person" />
+
+        <variable
+            name="presenter"
+            type="Presenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Main7Activity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{presenter.onClick}"
+            android:text="@{person.name}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->{ presenter.onClickShow(person.name)}}"
+            android:text="@{person.name}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{person.hobby["hobby"]}' />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入"
+            android:onTextChanged="@{presenter.onTextChange}" />
+
+        <ViewStub
+            android:id="@+id/viewstub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout="@layout/viewstub" />
+
+        <include
+            layout="@layout/layout"
+            app:person="@{person}" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            android:visibility="@{person.isMan ? View.GONE : View.VISIBLE}" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="person"
+            type="com.qin.databinding.bean.Person"/>
+       <variable
+           name="isChange"
+           type="Boolean"/>
+
+        <variable
+            name="presenter"
+            type="com.qin.databinding.Main8Activity.Presenter"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".Main8Activity">
+
+        <TextView
+            android:text="@{person.name}"
+            android:textColor="#00ffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:text=""
+            android:onTextChanged="@{presenter.onTextChanged}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:text="change"
+            android:enabled="@{isChange}"
+            android:onClick="@{presenter.change}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</layout>
